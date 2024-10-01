@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/perspective-custom-layout.js",
+    "extensionPoint": "platform-perspectives",
+    "description": "Perspective with a custom layout"
+}

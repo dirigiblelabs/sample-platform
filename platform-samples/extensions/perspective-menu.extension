@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/menu/perspective-default-menu.js",
+    "extensionPoint": "platform-menus",
+    "description": "Example menu for the default perspective"
+}

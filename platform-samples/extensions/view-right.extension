@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/view-right.js",
+    "extensionPoint": "platform-views",
+    "description": "Example right panel view"
+}

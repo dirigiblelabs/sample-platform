@@ -1,0 +1,52 @@
+<!--
+
+    Copyright (c) 2010-2024 Eclipse Dirigible contributors
+
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v2.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v20.html
+
+    SPDX-FileCopyrightText: Eclipse Dirigible contributors
+    SPDX-License-Identifier: EPL-2.0
+
+-->
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="exampleSubview" ng-controller="ExampleSubviewController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Fake icon -->
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <!-- Title directive that will automatically create a title based on the view config -->
+        <title config-title></title>
+        <!-- View config -->
+        <script type="text/javascript" src="/services/web/platform-samples/configs/subview.js"></script>
+        <!-- Base view services and styles -->
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=view-js">
+        </script>
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
+    </head>
+
+    <body class="bk-center bk-vbox bk-list-border">
+        <h2 bk-title header-size="h2">Subview</h2>
+        <p ng-if="message">{{message}}</p>
+        <!-- View controller -->
+        <script type="text/javascript">
+            const exampleViewLeft = angular.module('exampleSubview', ['blimpKit', 'platformView']);
+            exampleViewLeft.constant('MessageHub', new MessageHubApi())
+            exampleViewLeft.controller('ExampleSubviewController', function ($scope, MessageHub) {
+                $scope.message = '';
+                MessageHub.addMessageListener({topic: 'platform.samples.subview', handler: (data) => {
+                    $scope.$evalAsync(() => {
+                        $scope.message = `You selected menu item with id '${data.selectedItemId}'`;
+                    });
+                }});
+            });
+        </script>
+        <!-- Theme support. This must always be placed last -->
+        <theme></theme>
+    </body>
+
+</html>

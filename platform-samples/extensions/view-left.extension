@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/view-left.js",
+    "extensionPoint": "platform-views",
+    "description": "Example left panel view"
+}

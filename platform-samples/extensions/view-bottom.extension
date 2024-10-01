@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/view-bottom.js",
+    "extensionPoint": "platform-views",
+    "description": "Example bottom panel view"
+}

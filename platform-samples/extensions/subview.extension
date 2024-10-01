@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/subview.js",
+    "extensionPoint": "platform-subviews",
+    "description": "Example subview"
+}

@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/view-center.js",
+    "extensionPoint": "platform-views",
+    "description": "Example center panel view"
+}

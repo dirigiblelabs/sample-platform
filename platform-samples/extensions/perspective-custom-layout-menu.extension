@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/menu/perspective-custom-layout-menu.js",
+    "extensionPoint": "platform-menus",
+    "description": "Example menu for the custom layout perspective"
+}

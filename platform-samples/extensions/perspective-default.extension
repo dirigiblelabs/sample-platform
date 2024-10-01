@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/perspective-default.js",
+    "extensionPoint": "platform-perspectives",
+    "description": "Example perspective"
+}
