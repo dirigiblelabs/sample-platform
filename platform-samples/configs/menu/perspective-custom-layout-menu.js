@@ -9,13 +9,11 @@
  * SPDX-FileCopyrightText: Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-exports.getMenu = function () {
-	return {
-		perspectiveId: 'singleViewPerspective',
-		include: {
-			help: true,
-			window: true
-		},
-		items: []
-	};
-}
+exports.getMenu = () => ({
+	perspectiveId: 'singleViewPerspective',
+	include: {
+		help: true,
+		window: true
+	},
+	items: []
+});

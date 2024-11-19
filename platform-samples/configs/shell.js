@@ -16,7 +16,5 @@ const shellData = { // This must always be called "shellData"
 };
 // This config is used by both the front-end and the back-end, therefore we need to have this:
 if (typeof exports !== 'undefined') {
-	exports.getShell = function () {
-		return shellData;
-	}
+	exports.getShell = () => shellData;
 }

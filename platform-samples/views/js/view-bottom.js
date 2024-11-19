@@ -10,10 +10,10 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 const exampleViewBottom = angular.module('exampleViewBottom', ['blimpKit', 'platformView']);
-
-exampleViewBottom.controller('ExampleViewController', function ($scope, ViewParameters) {
+// Initialize controller
+exampleViewBottom.controller('ExampleViewController', ($scope, ViewParameters) => {
     $scope.title = 'Bottom view';
-    $scope.dataParameters = ViewParameters.get();
+    $scope.dataParameters = ViewParameters.get(); // Get all view parameters from the 'data-parameters' attribute.
     $scope.subtitle = $scope.dataParameters.subtitle ?? `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris

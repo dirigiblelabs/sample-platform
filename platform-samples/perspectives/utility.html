@@ -12,7 +12,7 @@
 
 -->
 <!DOCTYPE html>
-<html lang="en" ng-app="example" ng-controller="ExamplePerspectiveController" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" ng-app="utility" ng-controller="UtilityController" xmlns="http://www.w3.org/1999/xhtml">
 
     <head>
         <meta charset="utf-8">
@@ -33,248 +33,35 @@
         </script>
         <link type="text/css" rel="stylesheet"
             href="/services/js/platform-core/services/loader.js?id=perspective-css" />
+
+        <!-- Perspective controller -->
+        <script type="text/javascript" src="js/utility.js"></script>
     </head>
 
     <body>
         <bk-message-page glyph="sap-icon--information">
-            <bk-message-page-title>{{title}}</bk-message-page-title>
-            <bk-message-page-subtitle ng-on-contextmenu="showContextmenu($event)">{{subtitle}}
+            <bk-message-page-title>{{::title}}</bk-message-page-title>
+            <bk-message-page-subtitle ng-on-contextmenu="showContextMenu($event)">{{::subtitle}}
             </bk-message-page-subtitle>
             <bk-message-page-actions>
-                <bk-button compact="true" label="Show alert" ng-click="alert()"></bk-button>
-                <bk-button compact="true" label="Show dialog" ng-click="dialog()"></bk-button>
-                <bk-button compact="true" label="Show busy dialog" ng-click="busyDialog()"></bk-button>
-                <bk-button compact="true" label="Show form dialog" ng-click="formDialog()"></bk-button>
-                <bk-button compact="true" label="Show window" ng-click="showWindow()"></bk-button>
-                <bk-button compact="true" label="Show custom window" ng-click="showCustomWindow()"></bk-button>
+                <bk-button compact="::true" label="Show alert" ng-click="alert()"></bk-button>
+                <bk-button compact="::true" label="Show dialog" ng-click="dialog()"></bk-button>
+                <bk-button compact="::true" label="Show busy dialog" ng-click="busyDialog()"></bk-button>
+                <bk-button compact="::true" label="Show form dialog" ng-click="formDialog()"></bk-button>
+                <bk-button compact="::true" label="Show window" ng-click="showWindow()"></bk-button>
+                <bk-button compact="::true" label="Show custom window" ng-click="showCustomWindow()"></bk-button>
             </bk-message-page-actions>
             <bk-message-page-more>
                 <div class="bk-vbox fd-padding">
                     <div class="bk-list-border fd-margin-bottom--tiny"
                         style="box-sizing: border-box;position: relative;min-height: 3rem;width: 100%;"
-                        ng-on-contextmenu="showContextmenu($event)">
+                        ng-on-contextmenu="showContextMenu($event)">
                         <bk-badge>Right Click Area</bk-badge>
                     </div>
                     <embedded-view view-id="exampleSubview" type="subview"></embedded-view>
                 </div>
             </bk-message-page-more>
         </bk-message-page>
-        <!-- Perspective controller -->
-        <script type="text/javascript">
-            angular.module('example', ['platformView', 'platformSplit', 'blimpKit'])
-                .controller('ExamplePerspectiveController', function ($scope, ButtonStates) {
-                    $scope.title = 'Utility perspective';
-                    $scope.subtitle = 'Right-click for context menu';
-                    const messageHubApi = new MessageHubApi();
-                    const dialogApi = new DialogApi();
-                    const statusBarApi = new StatusBarApi();
-                    const contextmenuApi = new ContextMenuApi();
-
-                    $scope.alert = () => dialogApi.showAlert({
-                        title: 'Test title',
-                        message: 'Alert body',
-                        type: AlertTypes.Information,
-                        preformatted: false,
-                        buttons: [
-                            { id: 'ok', label: 'OK', state: ButtonStates.Emphasized },
-                            { id: 'close', label: 'Close' }
-                        ]
-                    }).then((buttonId) => {
-                        statusBarApi.showMessage(`You selected button with id - ${buttonId}`);
-                    }, (error) => {
-                        statusBarApi.showMessage(`An error occurred - ${error}`);
-                    });
-
-                    $scope.dialog = () => dialogApi.showDialog({
-                        title: 'Test title',
-                        message: 'Dialog body',
-                        buttons: [
-                            { id: 'ok', label: 'OK', state: ButtonStates.Emphasized },
-                            { id: 'close', label: 'Close' }
-                        ]
-                    }).then(function (buttonId) {
-                        statusBarApi.showMessage(`You selected button with id - ${buttonId}`);
-                    }, function (error) {
-                        statusBarApi.showMessage(`An error occurred - ${error}`);
-                    });
-
-                    $scope.busyDialog = () => {
-                        statusBarApi.showBusy('Another indicator');
-                        dialogApi.showBusyDialog('Loading...');
-                        setTimeout(() => {
-                            dialogApi.showBusyDialog('Almost done...');
-                        }, 2000);
-                        setTimeout(() => {
-                            dialogApi.closeBusyDialog();
-                            statusBarApi.hideBusy();
-                        }, 4000);
-                    };
-
-                    $scope.formDialog = () => dialogApi.showFormDialog({
-                        title: 'Form title',
-                        form: {
-                            'uname': {
-                                label: 'Username',
-                                controlType: 'input',
-                                type: 'text',
-                                placeholder: 'User Name',
-                                maxlength: 20,
-                                inputRules: {
-                                    excluded: ['excluded'],
-                                    patterns: ['^[^/]*$'] // Do not allow '/'
-                                },
-                                required: true
-                            },
-                            'pass': {
-                                label: 'Password',
-                                controlType: 'input',
-                                type: 'password',
-                                minlength: 3,
-                                enabledOn: { key: 'uname' },
-                                required: true
-                            },
-                            'cc': {
-                                label: 'Choose color',
-                                controlType: 'checkbox',
-                                value: false
-                            },
-                            'color': {
-                                label: 'Color',
-                                controlType: 'input',
-                                type: 'color',
-                                value: '#4287f5',
-                                enabledOn: { key: 'cc', value: true },
-                                required: true
-                            },
-                            'bdate': {
-                                label: 'Birthday',
-                                controlType: 'input',
-                                type: 'date',
-                                min: '2024-09-09',
-                                max: '2024-09-30',
-                                required: true
-                            },
-                            'ai': {
-                                label: 'Additional information',
-                                controlType: 'textarea',
-                                placeholder: 'Something you want to say',
-                                required: true
-                            },
-                            'time': {
-                                label: 'Time to execute',
-                                controlType: 'radio',
-                                options: [{
-                                    label: 'Slow',
-                                    value: 'slow'
-                                }, {
-                                    label: 'Normal',
-                                    value: 'normal'
-                                }, {
-                                    label: 'Fast',
-                                    value: 'fast'
-                                }],
-                                required: true,
-                            },
-                            'delivery': {
-                                label: 'Time to deliver',
-                                placeholder: 'Select time',
-                                controlType: 'dropdown',
-                                options: [{
-                                    label: 'Today',
-                                    value: 'today'
-                                }, {
-                                    label: 'Tomorrow',
-                                    value: 'tomorrow'
-                                }],
-                                required: true,
-                            },
-                            'noi': {
-                                label: 'Number of items',
-                                controlType: 'input',
-                                type: 'number',
-                                value: 2,
-                                min: 2,
-                                max: 12,
-                                step: 2,
-                                visibleOn: { key: 'delivery', value: 'today' },
-                                required: true
-                            },
-                        },
-                        width: '90%',
-                        height: '90%',
-                        minWidth: '320px',
-                        minHeight: '356px',
-                        maxWidth: '480px',
-                        maxHeight: '388px',
-                        submitLabel: 'Submit',
-                        cancelLabel: 'Cancel'
-                    }).then((form) => {
-                        console.log(form);
-                    }, (error) => {
-                        console.error(error);
-                    });
-
-                    $scope.showWindow = () => dialogApi.showWindow({
-                        hasHeader: true,
-                        id: 'about'
-                    });
-
-                    $scope.showCustomWindow = () => dialogApi.showWindow({
-                        hasHeader: true,
-                        title: 'Test window',
-                        path: '/services/web/platform-samples/views/view-bottom.html',
-                        params: { subtitle: 'Invoked from an utility perspective' },
-                    });
-
-                    $scope.showContextmenu = (event) => {
-                        event.preventDefault();
-                        contextmenuApi.showContextmenu({
-                            ariaLabel: 'perspective contextmenu',
-                            posX: event.clientX,
-                            posY: event.clientY,
-                            icons: true,
-                            items: [
-                                {
-                                    id: 'item1',
-                                    label: 'Item 1',
-                                    iconClass: 'sap-icon--information',
-                                    separator: true
-                                },
-                                {
-                                    id: 'item2',
-                                    label: 'Item 2',
-                                    iconPath: '/services/web/platform-samples/images/sample.svg',
-                                    items: [
-                                        {
-                                            id: 'item3',
-                                            label: 'Item 3',
-                                            iconClass: 'sap-icon--information',
-                                            disabled: true
-                                        },
-                                        {
-                                            id: 'item4',
-                                            label: 'Item 4',
-                                            iconClass: 'sap-icon--information',
-                                            disabled: false
-                                        }
-                                    ]
-                                },
-                                {
-                                    id: 'item5',
-                                    label: 'Item 5',
-                                    iconPath: '/services/web/platform-samples/images/perspective-utility.svg',
-                                    items: [],
-                                    disabled: true
-                                }
-                            ]
-                        }).then((id) => {
-                            if (id) {
-                                messageHubApi.postMessage({topic: 'platform.samples.subview', data: { selectedItemId: id }});
-                            } else statusBarApi.showError('Nothing was selected');
-                        });
-                    };
-                });
-        </script>
         <!-- Theme support. This must always be placed last -->
         <theme></theme>
     </body>

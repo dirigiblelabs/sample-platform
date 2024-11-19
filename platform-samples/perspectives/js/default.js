@@ -11,11 +11,10 @@
  */
 const examplePerspective = angular.module('example', ['platformView', 'platformLayout', 'blimpKit']);
 // Initialize controller
-examplePerspective.controller('ExamplePerspectiveController', function ($scope) {
-
+examplePerspective.controller('ExamplePerspectiveController', ($scope) => {
     $scope.layoutConfig = {
         // Array of view ids
-        views: ['exampleViewLeft', 'exampleViewBottom', 'exampleViewCenter', , 'exampleViewRight'],
+        views: ['exampleViewLeft', 'exampleViewBottom', 'exampleViewCenter'],
         viewSettings: {
             'exampleViewCenter': { closable: true },
         },

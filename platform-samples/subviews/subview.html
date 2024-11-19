@@ -35,10 +35,10 @@
         <!-- View controller -->
         <script type="text/javascript">
             const exampleViewLeft = angular.module('exampleSubview', ['blimpKit', 'platformView']);
-            exampleViewLeft.constant('MessageHub', new MessageHubApi())
-            exampleViewLeft.controller('ExampleSubviewController', function ($scope, MessageHub) {
+            exampleViewLeft.controller('ExampleSubviewController', ($scope) => {
+                const messageHub = new MessageHubApi();
                 $scope.message = '';
-                MessageHub.addMessageListener({topic: 'platform.samples.subview', handler: (data) => {
+                messageHub.addMessageListener({topic: 'platform.samples.subview', handler: (data) => {
                     $scope.$evalAsync(() => {
                         $scope.message = `You selected menu item with id '${data.selectedItemId}'`;
                     });

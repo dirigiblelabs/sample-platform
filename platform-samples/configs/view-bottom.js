@@ -14,11 +14,10 @@ const viewData = { // This must always be called 'viewData'
     label: 'Bottom view', // View label
     region: 'bottom', // The layout region in which this view will be shown
     path: '/services/web/platform-samples/views/view-bottom.html', // Link to the main html file
-    lazyLoad: true // When set to true, the view will load only when it becomes visible to the user.
+    lazyLoad: true, // When set to true, the view will load only when it becomes visible to the user.
+    autoFocusTab: true, // If true, the view will automatically send a focus request to the layout to focus its tab. Center and bottom views should have this enabled.
 };
 // This config is used by both the front-end and the back-end, therefore we need to have this:
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

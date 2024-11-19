@@ -19,7 +19,5 @@ const perspectiveData = { // This must always be called "perspectiveData"
 };
 // This config is used by both the front-end and the back-end, therefore we need to have this:
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

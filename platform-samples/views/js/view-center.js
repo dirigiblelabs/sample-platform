@@ -15,13 +15,44 @@ const exampleViewCenter = angular.module('exampleViewCenter', [
     'platformDialogs', // Only if the view is expected to work outside the platform
     'platformContextMenu' // Only if the view is expected to work outside the platform
 ]);
-
-exampleViewCenter.controller('ExampleViewController', function ($scope, ViewParameters) {
+// Initialize controller
+exampleViewCenter.controller('ExampleViewController', ($scope, ViewParameters) => {
     $scope.title = 'Center view';
     $scope.subtitle = 'Right-click this text for context menu';
     $scope.dataParameters = ViewParameters.get();
     const dialogApi = new DialogApi();
+    const layoutApi = new LayoutApi();
     const contextmenuApi = new ContextMenuApi();
+
+    $scope.showRight = () => {
+        dialogApi.showFormDialog({
+            title: 'Set a view parameter',
+            form: {
+                'title': {
+                    label: 'Right view title',
+                    controlType: 'input',
+                    type: 'text',
+                    placeholder: 'Some short title',
+                    maxlength: 20,
+                    submitOnEnter: true,
+                    focus: true,
+                    required: true
+                },
+            },
+            submitLabel: 'Open',
+            cancelLabel: 'Cancel'
+        }).then((form) => {
+            if (form) {
+                layoutApi.openView({
+                    id: 'exampleViewRight',
+                    params: {
+                        title: form['title'],
+                    }
+                });
+            }
+        });
+    };
+
     $scope.showContextmenu = (event) => {
         event.preventDefault();
         contextmenuApi.showContextmenu({

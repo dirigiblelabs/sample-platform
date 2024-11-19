@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/settings-example.js",
+    "extensionPoint": "platform-settings",
+    "description": "Example settings view"
+}

@@ -1,4 +1,5 @@
 {
     "guid": "platform-samples",
-    "dependencies": []
+    "dependencies": [],
+    "actions": []
 }

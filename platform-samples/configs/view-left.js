@@ -10,15 +10,14 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 const viewData = { // This must always be called 'viewData'
-    id: 'exampleViewLeft',  // Unique view ID
+    id: 'exampleViewLeft', // Unique view ID
     label: 'Left view', // View label
     region: 'left', // The layout region in which this view will be shown
     path: '/services/web/platform-samples/views/view-left.html', // Link to the main html file
-    lazyLoad: true // When set to true, the view will load only when it becomes visible to the user.
+    lazyLoad: true, // When set to true, the view will load only when it becomes visible to the user.
+    autoFocusTab: false, // If true, the view will automatically send a focus request to the layout to focus its tab. Left and right views should have this disabled.
 };
 // This config is used by both the front-end and the back-end, therefore we need to have this:
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

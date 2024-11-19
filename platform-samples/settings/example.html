@@ -1,0 +1,66 @@
+<!--
+
+    Copyright (c) 2010-2024 Eclipse Dirigible contributors
+
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v2.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v20.html
+
+    SPDX-FileCopyrightText: Eclipse Dirigible contributors
+    SPDX-License-Identifier: EPL-2.0
+
+-->
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="exampleSetting" ng-controller="ExampleSettingController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Fake icon -->
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <!-- Title directive that will automatically create a title based on the view config -->
+        <title config-title></title>
+        <!-- View config -->
+        <script type="text/javascript" src="/services/web/platform-samples/configs/settings-example.js"></script>
+        <!-- View services and styles -->
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?ids=view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
+    </head>
+
+    <body>
+        <bk-toolbar has-title="::true">
+            <bk-toolbar-title>General</bk-toolbar-title>
+        </bk-toolbar>
+        <div class="bk-center--horizontal bk-padding">
+            <bk-card class="bk-full-width bk-restrict-width--sm" card-type="list" aria-roledescription="Card">
+                <bk-card-header title="Setting" subtitle="with options">
+                    <bk-avatar image="/services/web/resources/images/dirigible-square.png" size="s" circle="true"
+                        aria-label="avatar">
+                    </bk-avatar>
+                </bk-card-header>
+                <bk-card-content aria-roledescription="Card content">
+                    <bk-list no-border="true">
+                        <bk-list-item tabindex="0">
+                            <bk-list-title>Item 1</bk-list-title>
+                        </bk-list-item>
+                        <bk-list-item tabindex="0">
+                            <bk-list-title>Item 2</bk-list-title>
+                        </bk-list-item>
+                        <bk-list-item tabindex="0">
+                            <bk-list-title>Item 3</bk-list-title>
+                        </bk-list-item>
+                    </bk-list>
+                </bk-card-content>
+            </bk-card>
+        </div>
+        <!-- View controller -->
+        <script>
+            const exampleSetting = angular.module('exampleSetting', ['blimpKit', 'platformView']);
+            exampleSetting.controller('ExampleSettingController', ($scope) => {});
+        </script>
+        <!-- Theme support. This must always be placed last -->
+        <theme></theme>
+    </body>
+
+</html>

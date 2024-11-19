@@ -11,14 +11,12 @@
  */
 const perspectiveData = { // This must always be called "perspectiveData"
 	id: 'exampleUtilityPerspective', // Unique utility perspective ID
-	label: 'Settings', // User-facing name
+	label: 'Utility', // User-facing name
 	path: '/services/web/platform-samples/perspectives/utility.html', // Link to the main perspective view
 	order: 10, // Used to sort the tabs in the utility section in the sidebar
-	icon: '/services/web/platform-samples/images/perspective-utility.svg', // The svg icon shown in the sidebar
+	icon: '/services/web/platform-samples/images/utility.svg', // The svg icon shown in the sidebar
 };
 // This config is used by both the front-end and the back-end, therefore we need to have this:
 if (typeof exports !== 'undefined') {
-	exports.getUtilityPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getUtilityPerspective = () => perspectiveData;
 }

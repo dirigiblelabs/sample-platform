@@ -10,11 +10,12 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 const viewData = { // This must always be called 'viewData'
-    id: 'exampleSubview', // Unique subview ID
-    label: 'Subview example', // View label
-    path: '/services/web/platform-samples/subviews/subview.html', // Link to the main html file
-    lazyLoad: true, // When set to true, the view will load only when it becomes visible to the user.
-    autoFocusTab: false, // If true, the view will automatically send a focus request to the layout to focus its tab. Usually disabled for subviews.
+    id: 'exampleSettingsView', // Unique setting ID
+    label: 'Example settings', // Setting label
+    order: 100, // The index of this setting in the list of settings
+    glyph: 'sap-icon--example', // CSS icon class name
+    path: '/services/web/platform-samples/settings/example.html', // Link to the main html file
+    autoFocusTab: false, // If true, the view will automatically send a focus request to the layout to focus its tab. Setting type views should have this disabled.
 };
 // This config is used by both the front-end and the back-end, therefore we need to have this:
 if (typeof exports !== 'undefined') {

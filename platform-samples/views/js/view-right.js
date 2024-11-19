@@ -9,10 +9,11 @@
  * SPDX-FileCopyrightText: Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-const exampleViewLeft = angular.module('exampleViewRight', ['blimpKit', 'platformView']);
-
-exampleViewLeft.controller('ExampleViewController', function ($scope) {
-    $scope.title = 'Right view';
+const exampleViewRight = angular.module('exampleViewRight', ['blimpKit', 'platformView']);
+// Initialize controller
+exampleViewRight.controller('ExampleViewController', ($scope, ViewParameters) => {
+    $scope.dataParameters = ViewParameters.get();
+    $scope.title = $scope.dataParameters.title ?? 'Right view';
     $scope.subtitle = `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris

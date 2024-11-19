@@ -45,7 +45,7 @@
         <!-- Shell controller. This can be a separate file, if the controller is too big. -->
         <script type="text/javascript">
             angular.module('shell', ['platformShell', 'blimpKit'])
-                .controller('ShellController', function ($scope) {
+                .controller('ShellController', ($scope) => {
                     /**
                      * You can manually set the perspective list. Just add `config="sidebarConfig"` as an attribute the the `perspective-container` directive.
                      * The following is an example config.

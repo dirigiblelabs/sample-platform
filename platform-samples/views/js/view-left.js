@@ -10,8 +10,8 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 const exampleViewLeft = angular.module('exampleViewLeft', ['blimpKit', 'platformView']);
-
-exampleViewLeft.controller('ExampleViewController', function ($scope) {
+// Initialize controller
+exampleViewLeft.controller('ExampleViewController', ($scope) => {
     $scope.title = 'Left view';
     $scope.subtitle = `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
