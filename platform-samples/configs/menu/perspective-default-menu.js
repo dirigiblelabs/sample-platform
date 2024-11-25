@@ -114,7 +114,7 @@ exports.getMenu = () => ({
 				{
 					label: 'About',
 					action: 'openWindow',
-					dialogId: 'about',
+					windowId: 'about',
 				}
 			]
 		}
