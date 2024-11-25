@@ -17,88 +17,88 @@ exports.getMenu = () => ({
 	},
 	items: [
 		{
-			label: "First",
+			label: 'First',
 			items: [
 				{
-					label: "Empty item",
+					label: 'Empty item',
 				}
 			]
 		},
 		{
-			label: "Example",
+			label: 'Example',
 			items: [
 				{
-					label: "Submenu",
+					label: 'Submenu',
 					items: [
 						{
-							label: "GitHub page",
-							data: "https://github.com/dirigiblelabs/sample-platform",
-							action: "open",
+							label: 'GitHub page',
+							data: 'https://github.com/dirigiblelabs/sample-platform',
+							action: 'open',
 						},
 						{
-							label: "Empty item with divider",
-							divider: true,
+							label: 'Empty item with a separator',
+							separator: true,
 						},
 						{
-							label: "Empty item",
+							label: 'Empty item',
 						}
 					]
 				},
 				{
-					label: "Submenu",
+					label: 'Submenu',
 					items: [
 						{
-							label: "GitHub page",
-							data: "https://github.com/dirigiblelabs/sample-platform",
-							action: "open",
+							label: 'GitHub page',
+							data: 'https://github.com/dirigiblelabs/sample-platform',
+							action: 'open',
 						},
 						{
-							label: "Empty item with divider",
-							divider: true,
+							label: 'Empty item with a separator',
+							separator: true,
 						},
 						{
-							label: "Empty item",
+							label: 'Empty item',
 							items: [
 								{
-									label: "GitHub page",
-									data: "https://github.com/dirigiblelabs/sample-platform",
-									action: "open",
+									label: 'GitHub page',
+									data: 'https://github.com/dirigiblelabs/sample-platform',
+									action: 'open',
 								},
 								{
-									label: "Empty item with divider",
-									divider: true,
+									label: 'Empty item with a separator',
+									separator: true,
 								},
 								{
-									label: "Empty item",
+									label: 'Empty item',
 								}
 							]
 						},
 						{
-							label: "Empty item 2",
+							label: 'Empty item 2',
 							items: [
 								{
-									label: "GitHub page",
-									data: "https://github.com/dirigiblelabs/sample-platform",
-									action: "open",
+									label: 'GitHub page',
+									data: 'https://github.com/dirigiblelabs/sample-platform',
+									action: 'open',
 								},
 								{
-									label: "Empty item with divider",
-									divider: true,
+									label: 'Empty item with separator',
+									separator: true,
 								},
 								{
-									label: "Empty item",
+									label: 'Empty item',
 									items: [
 										{
-											label: "GitHub page",
-											data: "https://github.com/dirigiblelabs/sample-platform",
-											action: "open",
+											label: 'GitHub page',
+											data: 'https://github.com/dirigiblelabs/sample-platform',
+											action: 'open',
 										},
 										{
-											label: "Empty item with divider",
-											divider: true,
+											label: 'Empty item with separator',
+											separator: true,
 										},
 										{
-											label: "Empty item",
+											label: 'Empty item',
 										}
 									]
 								}
@@ -107,14 +107,14 @@ exports.getMenu = () => ({
 					]
 				},
 				{
-					label: "Event",
-					event: "example.menu.event",
-					divider: true,
+					label: 'Event',
+					event: 'example.menu.event',
+					separator: true,
 				},
 				{
-					label: "About",
-					action: "openDialogWindow",
-					dialogId: "about",
+					label: 'About',
+					action: 'openWindow',
+					dialogId: 'about',
 				}
 			]
 		}

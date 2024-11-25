@@ -22,7 +22,7 @@ exampleViewCenter.controller('ExampleViewController', ($scope, ViewParameters) =
     $scope.dataParameters = ViewParameters.get();
     const dialogApi = new DialogApi();
     const layoutApi = new LayoutApi();
-    const contextmenuApi = new ContextMenuApi();
+    const contextMenuApi = new ContextMenuApi();
 
     $scope.showRight = () => {
         dialogApi.showFormDialog({
@@ -53,9 +53,9 @@ exampleViewCenter.controller('ExampleViewController', ($scope, ViewParameters) =
         });
     };
 
-    $scope.showContextmenu = (event) => {
+    $scope.showContextMenu = (event) => {
         event.preventDefault();
-        contextmenuApi.showContextmenu({
+        contextMenuApi.showContextMenu({
             ariaLabel: 'perspective contextmenu',
             posX: event.clientX,
             posY: event.clientY,

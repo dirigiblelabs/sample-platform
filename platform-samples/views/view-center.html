@@ -34,13 +34,12 @@
 	<body>
 		<bk-message-page glyph="sap-icon--information">
 			<bk-message-page-title>{{::title}}</bk-message-page-title>
-			<bk-message-page-subtitle ng-on-contextmenu="showContextmenu($event)">{{::subtitle}}
+			<bk-message-page-subtitle ng-on-contextmenu="showContextMenu($event)">{{::subtitle}}
 			</bk-message-page-subtitle>
 			<bk-message-page-actions>
 				<bk-button ng-if="!dataParameters.container" compact="::true" label="Show alert" ng-click="alert()">
 				</bk-button>
-				<bk-button ng-if="dataParameters.container" compact="::true" label="Show right view"
-					ng-click="showRight()">
+				<bk-button ng-if="dataParameters.container" compact="::true" label="Show right view" ng-click="showRight()">
 				</bk-button>
 			</bk-message-page-actions>
 		</bk-message-page>

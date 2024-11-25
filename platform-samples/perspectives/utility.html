@@ -31,8 +31,7 @@
         <!-- Base perspective services and styles -->
         <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=perspective-js">
         </script>
-        <link type="text/css" rel="stylesheet"
-            href="/services/js/platform-core/services/loader.js?id=perspective-css" />
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=perspective-css" />
 
         <!-- Perspective controller -->
         <script type="text/javascript" src="js/utility.js"></script>
@@ -41,7 +40,7 @@
     <body>
         <bk-message-page glyph="sap-icon--information">
             <bk-message-page-title>{{::title}}</bk-message-page-title>
-            <bk-message-page-subtitle ng-on-contextmenu="showContextMenu($event)">{{::subtitle}}
+            <bk-message-page-subtitle>{{::subtitle}}
             </bk-message-page-subtitle>
             <bk-message-page-actions>
                 <bk-button compact="::true" label="Show alert" ng-click="alert()"></bk-button>
@@ -53,9 +52,7 @@
             </bk-message-page-actions>
             <bk-message-page-more>
                 <div class="bk-vbox fd-padding">
-                    <div class="bk-list-border fd-margin-bottom--tiny"
-                        style="box-sizing: border-box;position: relative;min-height: 3rem;width: 100%;"
-                        ng-on-contextmenu="showContextMenu($event)">
+                    <div class="bk-list-border fd-margin-bottom--tiny" style="box-sizing: border-box;position: relative;min-height: 3rem;width: 100%;" ng-on-contextmenu="showContextMenu($event)">
                         <bk-badge>Right Click Area</bk-badge>
                     </div>
                     <embedded-view view-id="exampleSubview" type="subview"></embedded-view>
