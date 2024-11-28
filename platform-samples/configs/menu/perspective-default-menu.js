@@ -17,105 +17,44 @@ exports.getMenu = () => ({
 	},
 	items: [
 		{
-			label: 'First',
-			items: [
-				{
-					label: 'Empty item',
-				}
-			]
-		},
-		{
 			label: 'Example',
 			items: [
 				{
-					label: 'Submenu',
-					items: [
-						{
-							label: 'GitHub page',
-							data: 'https://github.com/dirigiblelabs/sample-platform',
-							action: 'open',
-						},
-						{
-							label: 'Empty item with a separator',
-							separator: true,
-						},
-						{
-							label: 'Empty item',
-						}
-					]
-				},
-				{
-					label: 'Submenu',
-					items: [
-						{
-							label: 'GitHub page',
-							data: 'https://github.com/dirigiblelabs/sample-platform',
-							action: 'open',
-						},
-						{
-							label: 'Empty item with a separator',
-							separator: true,
-						},
-						{
-							label: 'Empty item',
-							items: [
-								{
-									label: 'GitHub page',
-									data: 'https://github.com/dirigiblelabs/sample-platform',
-									action: 'open',
-								},
-								{
-									label: 'Empty item with a separator',
-									separator: true,
-								},
-								{
-									label: 'Empty item',
-								}
-							]
-						},
-						{
-							label: 'Empty item 2',
-							items: [
-								{
-									label: 'GitHub page',
-									data: 'https://github.com/dirigiblelabs/sample-platform',
-									action: 'open',
-								},
-								{
-									label: 'Empty item with separator',
-									separator: true,
-								},
-								{
-									label: 'Empty item',
-									items: [
-										{
-											label: 'GitHub page',
-											data: 'https://github.com/dirigiblelabs/sample-platform',
-											action: 'open',
-										},
-										{
-											label: 'Empty item with separator',
-											separator: true,
-										},
-										{
-											label: 'Empty item',
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
 					label: 'Event',
-					event: 'example.menu.event',
-					separator: true,
+					action: 'event',
+					data: {
+						topic: 'example.menu.event',
+						message: 'example'
+					}
 				},
 				{
+					id: 'workbench',
+					label: 'Workbench',
+					action: 'showPerspective',
+				},
+				{
+					id: 'about',
 					label: 'About',
 					action: 'openWindow',
-					windowId: 'about',
-				}
+					hasHeader: true,
+				},
+				{
+					label: 'Submenu',
+					items: [
+						{
+							label: 'GitHub page',
+							action: 'open',
+							link: 'https://github.com/dirigiblelabs/sample-platform',
+						},
+						{
+							label: 'Empty item with a separator',
+							separator: true,
+						},
+						{
+							label: 'Empty item',
+						}
+					]
+				},
 			]
 		}
 	]

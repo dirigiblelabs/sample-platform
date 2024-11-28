@@ -14,7 +14,6 @@ const viewData = { // This must always be called 'viewData'
     label: 'Subview example', // View label
     path: '/services/web/platform-samples/subviews/subview.html', // Link to the main html file
     lazyLoad: true, // When set to true, the view will load only when it becomes visible to the user.
-    autoFocusTab: false, // If true, the view will automatically send a focus request to the layout to focus its tab. Usually disabled for subviews.
 };
 // This config is used by both the front-end and the back-end, therefore we need to have this:
 if (typeof exports !== 'undefined') {

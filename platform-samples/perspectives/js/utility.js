@@ -19,6 +19,7 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
     const statusBarApi = new StatusBarApi();
     const contextMenuApi = new ContextMenuApi();
     const notificationApi = new NotificationApi();
+    const layoutApi = new LayoutApi();
 
     $scope.alert = () => dialogApi.showAlert({
         title: 'Test title',
@@ -179,6 +180,10 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
         path: '/services/web/platform-samples/views/view-bottom.html',
         params: { subtitle: 'Invoked from an utility perspective' },
     });
+
+    $scope.switchPerspective = () => {
+        layoutApi.showPerspective({ id: 'examplePerspective' });
+    };
 
     $scope.showContextMenu = (event) => {
         event.preventDefault();

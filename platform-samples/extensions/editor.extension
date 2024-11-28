@@ -1,0 +1,5 @@
+{
+    "module": "platform-samples/configs/editor.js",
+    "extensionPoint": "platform-editors",
+    "description": "Example editor"
+}
