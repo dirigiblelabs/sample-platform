@@ -14,14 +14,14 @@ const utility = angular.module('utility', ['platformView', 'platformSplit', 'bli
 utility.controller('UtilityController', ($scope, ButtonStates) => {
     $scope.title = 'Utility perspective';
     $scope.subtitle = 'Right-click for context menu';
-    const messageHubApi = new MessageHubApi();
-    const dialogApi = new DialogApi();
-    const statusBarApi = new StatusBarApi();
-    const contextMenuApi = new ContextMenuApi();
-    const notificationApi = new NotificationApi();
-    const layoutApi = new LayoutApi();
+    const messageHub = new MessageHubApi();
+    const dialogHub = new DialogHub();
+    const statusBarHub = new StatusBarHub();
+    const contextMenuHub = new ContextMenuHub();
+    const notificationHub = new NotificationHub();
+    const layoutHub = new LayoutHub();
 
-    $scope.alert = () => dialogApi.showAlert({
+    $scope.alert = () => dialogHub.showAlert({
         title: 'Test title',
         message: 'Alert body',
         type: AlertTypes.Information,
@@ -31,12 +31,12 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
             { id: 'close', label: 'Close' }
         ]
     }).then((buttonId) => {
-        statusBarApi.showMessage(`You selected button with id - ${buttonId}`);
+        statusBarHub.showMessage(`You selected button with id - ${buttonId}`);
     }, (error) => {
-        statusBarApi.showError(`An error occurred - ${error}`);
+        statusBarHub.showError(`An error occurred - ${error}`);
     });
 
-    $scope.dialog = () => dialogApi.showDialog({
+    $scope.dialog = () => dialogHub.showDialog({
         title: 'Test title',
         message: 'Dialog body',
         buttons: [
@@ -44,24 +44,24 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
             { id: 'close', label: 'Close' }
         ]
     }).then((buttonId) => {
-        statusBarApi.showMessage(`You selected button with id - ${buttonId}`);
+        statusBarHub.showMessage(`You selected button with id - ${buttonId}`);
     }, (error) => {
-        statusBarApi.showError(`An error occurred - ${error}`);
+        statusBarHub.showError(`An error occurred - ${error}`);
     });
 
     $scope.busyDialog = () => {
-        statusBarApi.showBusy('Another indicator');
-        dialogApi.showBusyDialog('Loading...');
+        statusBarHub.showBusy('Another indicator');
+        dialogHub.showBusyDialog('Loading...');
         setTimeout(() => {
-            dialogApi.showBusyDialog('Almost done...');
+            dialogHub.showBusyDialog('Almost done...');
         }, 2000);
         setTimeout(() => {
-            dialogApi.closeBusyDialog();
-            statusBarApi.hideBusy();
+            dialogHub.closeBusyDialog();
+            statusBarHub.hideBusy();
         }, 4000);
     };
 
-    $scope.formDialog = () => dialogApi.showFormDialog({
+    $scope.formDialog = () => dialogHub.showFormDialog({
         title: 'Form title',
         form: {
             'uname': {
@@ -169,12 +169,12 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
         console.error(error);
     });
 
-    $scope.showWindow = () => dialogApi.showWindow({
+    $scope.showWindow = () => dialogHub.showWindow({
         hasHeader: true,
         id: 'about'
     });
 
-    $scope.showCustomWindow = () => dialogApi.showWindow({
+    $scope.showCustomWindow = () => dialogHub.showWindow({
         hasHeader: true,
         title: 'Test window',
         path: '/services/web/platform-samples/views/view-bottom.html',
@@ -182,12 +182,12 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
     });
 
     $scope.switchPerspective = () => {
-        layoutApi.showPerspective({ id: 'examplePerspective' });
+        layoutHub.showPerspective({ id: 'examplePerspective' });
     };
 
     $scope.showContextMenu = (event) => {
         event.preventDefault();
-        contextMenuApi.showContextMenu({
+        contextMenuHub.showContextMenu({
             ariaLabel: 'perspective contextmenu',
             posX: event.clientX,
             posY: event.clientY,
@@ -243,13 +243,13 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
             ]
         }).then((id) => {
             if (id) {
-                if (id === 'notifyInfo') notificationApi.show({ type: 'information', title: 'Information', description: 'This is used to show information.' });
-                else if (id === 'notifyWarn') notificationApi.show({ type: 'warning', title: 'Warning', description: 'This is used to show a warning.' });
-                else if (id === 'notifyNeg') notificationApi.show({ type: 'negative', title: 'Negative', description: 'This is used to show errors or any negative results.' });
-                else if (id === 'notifyPos') notificationApi.show({ type: 'positive', title: 'Positive', description: 'This is used to show positive results.' });
-                else messageHubApi.postMessage({ topic: 'platform.samples.subview', data: { selectedItemId: id } });
-                statusBarApi.showLabel('Label');
-            } else statusBarApi.showError('Nothing was selected');
+                if (id === 'notifyInfo') notificationHub.show({ type: 'information', title: 'Information', description: 'This is used to show information.' });
+                else if (id === 'notifyWarn') notificationHub.show({ type: 'warning', title: 'Warning', description: 'This is used to show a warning.' });
+                else if (id === 'notifyNeg') notificationHub.show({ type: 'negative', title: 'Negative', description: 'This is used to show errors or any negative results.' });
+                else if (id === 'notifyPos') notificationHub.show({ type: 'positive', title: 'Positive', description: 'This is used to show positive results.' });
+                else messageHub.postMessage({ topic: 'platform.samples.subview', data: { selectedItemId: id } });
+                statusBarHub.showLabel('Label');
+            } else statusBarHub.showError('Nothing was selected');
         });
     };
 });

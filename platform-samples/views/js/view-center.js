@@ -20,12 +20,12 @@ exampleViewCenter.controller('ExampleViewController', ($scope, ViewParameters) =
     $scope.title = 'Center view';
     $scope.subtitle = 'Right-click this text for context menu';
     $scope.dataParameters = ViewParameters.get();
-    const dialogApi = new DialogApi();
-    const layoutApi = new LayoutApi();
-    const contextMenuApi = new ContextMenuApi();
+    const dialogHub = new DialogHub();
+    const layoutHub = new LayoutHub();
+    const contextMenuHub = new ContextMenuHub();
 
     $scope.showRight = () => {
-        dialogApi.showFormDialog({
+        dialogHub.showFormDialog({
             title: 'Set a view parameter',
             form: {
                 'title': {
@@ -43,7 +43,7 @@ exampleViewCenter.controller('ExampleViewController', ($scope, ViewParameters) =
             cancelLabel: 'Cancel'
         }).then((form) => {
             if (form) {
-                layoutApi.openView({
+                layoutHub.openView({
                     id: 'exampleViewRight',
                     params: {
                         title: form['title'],
@@ -55,7 +55,7 @@ exampleViewCenter.controller('ExampleViewController', ($scope, ViewParameters) =
 
     $scope.showContextMenu = (event) => {
         event.preventDefault();
-        contextMenuApi.showContextMenu({
+        contextMenuHub.showContextMenu({
             ariaLabel: 'perspective contextmenu',
             posX: event.clientX,
             posY: event.clientY,
@@ -95,7 +95,7 @@ exampleViewCenter.controller('ExampleViewController', ($scope, ViewParameters) =
                 }
             ]
         }).then((id) => {
-            if (id) dialogApi.showAlert({
+            if (id) dialogHub.showAlert({
                 title: 'Item selected',
                 message: `You selected context menu item with id '${id}'`,
                 type: AlertTypes.Success
