@@ -10,7 +10,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 exports.getPerspectiveGroup = () => ({
-	id: 'examplePerspectiveGroup', // Unique ID
+	id: 'examplePerspectiveGroup', // Unique group ID
 	label: 'Group', // User-facing name
 	expanded: true, // Should the group be expanded by default
 	order: 1000, // Used to sort the tabs in the sidebar

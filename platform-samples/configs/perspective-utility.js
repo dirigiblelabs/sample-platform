@@ -10,7 +10,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 const perspectiveData = { // This must always be called "perspectiveData"
-	id: 'exampleUtilityPerspective', // Unique utility perspective ID
+	id: 'exampleUtilityPerspective', // Unique perspective ID
 	label: 'Utility', // User-facing name
 	path: '/services/web/platform-samples/perspectives/utility.html', // Link to the main perspective view
 	order: 10, // Used to sort the tabs in the utility section in the sidebar

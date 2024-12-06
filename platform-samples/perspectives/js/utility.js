@@ -19,7 +19,7 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
     const statusBarHub = new StatusBarHub();
     const contextMenuHub = new ContextMenuHub();
     const notificationHub = new NotificationHub();
-    const layoutHub = new LayoutHub();
+    const shellHub = new ShellHub();
 
     $scope.alert = () => dialogHub.showAlert({
         title: 'Test title',
@@ -182,7 +182,7 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
     });
 
     $scope.switchPerspective = () => {
-        layoutHub.showPerspective({ id: 'examplePerspective' });
+        shellHub.showPerspective({ id: 'examplePerspective' });
     };
 
     $scope.showContextMenu = (event) => {
