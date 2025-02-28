@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Eclipse Dirigible contributors
+ * Copyright (c) 2025 Eclipse Dirigible contributors
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
@@ -13,7 +13,7 @@ const utility = angular.module('utility', ['platformView', 'platformSplit', 'bli
 // Initialize controller
 utility.controller('UtilityController', ($scope, ButtonStates) => {
     $scope.title = 'Utility perspective';
-    $scope.subtitle = 'Right-click for context menu';
+    $scope.subtitle = 'Test some stuff';
     const messageHub = new MessageHubApi();
     const dialogHub = new DialogHub();
     const statusBarHub = new StatusBarHub();
