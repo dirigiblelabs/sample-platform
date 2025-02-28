@@ -17,15 +17,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The brand-icon directive will automatically set the icon from the brand config -->
-        <link brand-icon rel="icon" href="data:;base64,iVBORw0KGgo=" />
-        <!-- The brand-title directive will automatically set the title based on the currently selected perspective -->
-        <title brand-title></title>
+        <!-- The config-icons directive will automatically set the favicons from the brand config -->
+        <link config-icons rel="icon" href="data:;base64,iVBORw0KGgo=" />
+        <!-- The shell-title directive will automatically set the title based on the currently selected perspective -->
+        <title shell-title></title>
         <!-- Shell config. Place this before the shell services -->
         <script type="text/javascript" src="/services/web/platform-samples/configs/shell.js"></script>
         <!-- Shell services and styles -->
-        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=shell-js">
-        </script>
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=shell-js"></script>
         <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=shell-css" />
     </head>
 
@@ -44,6 +43,17 @@
 
         <!-- Shell controller. This can be a separate file, if the controller is too big. -->
         <script type="text/javascript">
+            // Using the "setBrandingInfo" function, we can override the default branding info
+            setBrandingInfo({
+                name: 'Sample',
+                brand: 'Sample',
+                brandUrl: 'https://github.com/dirigiblelabs/sample-platform',
+                icons: {
+                    faviconIco: '/services/web/platform-samples/images/favicon.ico',
+                },
+                logo: '/services/web/platform-samples/images/platform-sample.svg',
+                keyPrefix: 'platform-sample'
+            });
             angular.module('shell', ['platformShell', 'blimpKit'])
                 .controller('ShellController', ($scope) => {
                     /**
