@@ -175,10 +175,12 @@ utility.controller('UtilityController', ($scope, ButtonStates) => {
     });
 
     $scope.showCustomWindow = () => dialogHub.showWindow({
-        hasHeader: true,
+        hasHeader: false,
         title: 'Test window',
         path: '/services/web/platform-samples/views/view-bottom.html',
         params: { subtitle: 'Invoked from an utility perspective' },
+        maxWidth: '400px',
+        maxHeight: '400px',
     });
 
     $scope.switchPerspective = () => {
